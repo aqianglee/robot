@@ -6,4 +6,6 @@ public interface Componet {
 	public void execute();
 
 	public void prepareArguements(Map<String, String> args);
+
+	public void showHelp();
 }

@@ -9,13 +9,17 @@ public class MakeDirComponet implements Componet {
 
 	public void execute() {
 		File file = new File(name);
-		if(!file.isDirectory()) {
+		if (!file.isDirectory()) {
 			file.mkdirs();
 		}
 	}
 
 	public void prepareArguements(Map<String, String> args) {
 		name = args.get("-n");
+	}
+
+	public void showHelp() {
+
 	}
 
 }

@@ -9,6 +9,7 @@ import org.dom4j.DocumentException;
 import org.dom4j.Element;
 import org.dom4j.io.SAXReader;
 
+import com.foo.componet.ChatComponet;
 import com.foo.componet.Componet;
 import com.foo.componet.ComponetSummary;
 import com.foo.step.DecodeArgsStep;
@@ -30,15 +31,36 @@ public class Robot {
 
 	public void start() {
 		String commond = null;
+		ComponetSummary summary = null;
 		while (!(commond = scanner.nextLine()).equals("exit")) {
-			ComponetSummary summary = new ComponetSummary();
-			for (Step step : Config.getSteps()) {
-				if (!step.doStep(commond, summary)) {
-					break;
-				}
+			summary = new ComponetSummary();
+			if (!firstSide(commond, summary) && summary.getComponet() == null) {
+				summary.setComponet(new ChatComponet());
+				summary.getArgs().put("-c", commond);
+				summary.getComponet().prepareArguements(summary.getArgs());
+				summary.getComponet().execute();
+			} else {
+				summary.getComponet().showHelp();
 			}
-			summary.getComponet().execute();
+			summary = null;
 		}
+	}
+
+	private boolean firstSide(String commond, ComponetSummary summary) {
+		if (prepareHandle(commond, summary)) {
+			summary.getComponet().execute();
+			return true;
+		}
+		return false;
+	}
+
+	private boolean prepareHandle(String commond, ComponetSummary summary) {
+		for (Step step : Config.getSteps()) {
+			if (!step.doStep(commond, summary)) {
+				return false;
+			}
+		}
+		return true;
 	}
 
 	@SuppressWarnings("unchecked")

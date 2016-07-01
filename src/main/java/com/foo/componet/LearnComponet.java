@@ -18,6 +18,7 @@ public class LearnComponet implements Componet {
 			properties.load(new FileInputStream(file));
 			properties.setProperty(question, answer);
 			properties.store(new FileOutputStream(file), null);
+			System.out.println("finished try now!");
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -31,6 +32,10 @@ public class LearnComponet implements Componet {
 		}
 		question = q;
 		answer = a;
+	}
+
+	public void showHelp() {
+		
 	}
 
 }
