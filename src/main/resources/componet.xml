@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<componets xmlns="http://www.example.org/componet" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.example.org/componet componet.xsd ">
+	<componet class="com.foo.componet.ChatComponet" id="chat" />
+	<componet class="com.foo.componet.LearnComponet" id="learn" />
+	<componet class="com.foo.componet.MakeDirComponet" id="mkdir" />
+</componets>

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="BIG5"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/componet"
+	xmlns:tns="http://www.example.org/componet" elementFormDefault="qualified">
+	<element name="componets">
+		<complexType>
+			<sequence maxOccurs="unbounded" minOccurs="0">
+				<element name="componet">
+					<complexType>
+						<attribute name="id" type="string" use="required" />
+						<attribute name="class" type="string" use="required" />
+						<attribute name="steps" type="string" use="optional" />
+					</complexType>
+				</element>
+			</sequence>
+		</complexType>
+	</element>
+</schema>
